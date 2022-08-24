@@ -183,7 +183,6 @@ Citizen.CreateThread(function()
                             requiredCops = Config.IllegalActions,
                             currentCops = Config.CurrentCops,
                             job = GetPlayerServerId(NetworkGetEntityOwner(GetPlayerPed(-1))),
-                            policia = nohay
 
                             
                         })                    
@@ -277,7 +276,6 @@ end)
        
         SendNUIMessage({
             action = 'actualizapolicia',
-            policia = 'Sihay',
         })
 
    
@@ -287,13 +285,64 @@ end)
 
         SendNUIMessage({
             action = 'actualizapoliciano',
-            policia = 'Sihay',
         })
 
 
     end)
 
+    RegisterCommand("samedisponible", function(source, args, rawCommand) 
 
+        SendNUIMessage({
+            action = 'actualizasame',
+        })
+
+
+    end)
+
+    RegisterCommand("samenodisponible", function(source, args, rawCommand) 
+
+        SendNUIMessage({
+            action = 'actualizasameno',
+        })
+
+
+    end)
+
+    RegisterCommand("mecanicodisponible", function(source, args, rawCommand) 
+
+        SendNUIMessage({
+            action = 'actualizamecanico',
+        })
+
+
+    end)
+
+    RegisterCommand("mecaniconodisponible", function(source, args, rawCommand) 
+
+        SendNUIMessage({
+            action = 'actualizamecanicono',
+        })
+
+
+    end)
+
+    RegisterCommand("taxidisponible", function(source, args, rawCommand) 
+
+        SendNUIMessage({
+            action = 'actualizataxi',
+        })
+
+
+    end)
+
+    RegisterCommand("taxinodisponible", function(source, args, rawCommand) 
+
+        SendNUIMessage({
+            action = 'actualizataxino',
+        })
+
+
+    end)
 
 
 Citizen.CreateThread(function()

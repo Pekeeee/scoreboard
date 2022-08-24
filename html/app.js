@@ -25,25 +25,6 @@ $(document).ready(function(){
                 $('#staff').html(jobs.taxi);
                     
                 break;
-
-                
-
-                    case 'actualizapolicia':
-                       
-                        $("#policia").html('<i class="fas fa-check"></i>');
-            
-                        
-            
-                        break;
-
-                        case 'actualizapoliciano':
-                       
-                        $("#policia").html('<i class="fas fa-times"></i>');
-            
-                        
-            
-                    default:
-                        break;
                 
         }
     })
@@ -67,31 +48,92 @@ function sortPlayerList() {
 
 QBScoreboard.Open = function(data) {
 
+    $(document).ready(function(){
+        window.addEventListener('message', function(event) {     
+        switch(event.data.action){
+
+        case 'actualizapolicia':
+                       
+        $("#policia").html('<i class="fas fa-check"></i>');
+        $.each(data.requiredCops, function(i, category){
+            var beam = $(".scoreboard-info").find('[data-type="'+i+'"]');
+            var status = $(beam).find(".info-beam-status");
+    
+            $(status).html('<i class="fas fa-check"></i>');
+        
+        });
+        
+
+        break;
+
+        case 'actualizasame':
+                       
+            $("#same").html('<i class="fas fa-check"></i>');
+        
+
+        break;
+
+        case 'actualizasameno':
+                       
+            $("#same").html('<i class="fas fa-times"></i>');
+        
+
+        break;
+
+        case 'actualizamecanico':
+                       
+            $("#mecanico").html('<i class="fas fa-check"></i>');
+        
+
+        break;
+
+        case 'actualizamecanicono':
+                       
+            $("#mecanico").html('<i class="fas fa-times"></i>');
+        
+
+        break;
+
+        case 'actualizataxi':
+                       
+            $("#taxista").html('<i class="fas fa-check"></i>');
+        
+
+        break;
+
+        case 'actualizataxino':
+                       
+           $("#taxista").html('<i class="fas fa-times"></i>');
+        
+
+        break;
+
+        case 'actualizapoliciano':
+       
+        $("#policia").html('<i class="fas fa-times"></i>');
+        $.each(data.requiredCops, function(i, category){
+            var beam = $(".scoreboard-info").find('[data-type="'+i+'"]');
+            var status = $(beam).find(".info-beam-status");
+    
+            $(status).html('<i class="fas fa-times"></i>');
+        
+        });
+
+        
+
+    default:
+        break;
+    }
+        })
+    })
+
     $(".scoreboard-block").fadeIn(150);
     $("#total-players").html("<p>"+data.players+"/"+data.maxPlayers+"</p>");
     $("#ping").html("<p>"+data.ping+"</p>");
     $("#job").html("<p>"+data.job+"</p>");
-    $("#policia").html('<i class="fas fa-times"></i>');
+
+        
   
-  
-
-
-
-    $.each(data.requiredCops, function(i, category){
-        var beam = $(".scoreboard-info").find('[data-type="'+i+'"]');
-        var status = $(beam).find(".info-beam-status");
-
-
-        if (category.busy) {
-            $(status).html('<i class="fas fa-clock"></i>');
-        } else if (data.currentCops >= category.minimum) {
-            $(status).html('<i class="fas fa-check"></i>');
-        } else {
-            $(status).html('<i class="fas fa-times"></i>');
-        }
-    });
-
-
 
 
 
@@ -105,6 +147,7 @@ QBScoreboard.Open = function(data) {
         }
     }
 
+    
 }
 
 QBScoreboard.Close = function() {

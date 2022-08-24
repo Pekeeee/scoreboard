@@ -60,18 +60,6 @@ Config.IllegalActions = {
         minimum = 1,
         busy = false,
     },
-    ["taxis"] = {
-        minimum = 1,
-        busy = false,
-    },
-    ["same"] = {
-        minimum = 1,
-        busy = false,
-    },
-    ["mecanicos"] = {
-        minimum = 1,
-        busy = false,
-    },
     ["pacific"] = {
         minimum = 1,
         busy = false,
